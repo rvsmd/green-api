@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+.env
+.superpowers
+.codex
+.pnp.cjs
+.pnp.loader.mjs
+.yarn
