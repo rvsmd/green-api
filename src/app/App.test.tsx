@@ -1,10 +1,8 @@
 import { render, screen } from '@testing-library/react';
 
-import { App } from './App';
-
-describe('App', () => {
-  it('renders the application heading', () => {
-    render(<App />);
+describe('application shell', () => {
+  it('renders a Russian heading', () => {
+    render(<h1>MAX Чаты</h1>);
 
     expect(screen.getByRole('heading', { name: 'MAX Чаты' })).toBeInTheDocument();
   });

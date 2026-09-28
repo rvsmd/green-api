@@ -33,30 +33,32 @@
 
 ## File Structure
 
-| Path | Responsibility |
-|---|---|
-| `src/api/axiosConfig.ts` | Configured Axios instance without runtime credentials. |
-| `src/api/GreenApi.ts` | Typed static GREEN-API send/receive methods. |
-| `src/api/types.ts` | API request and notification contracts. |
-| `src/app/chat/ChatProvider.tsx` | In-memory chat summaries and message state shared across routes. |
-| `src/app/router/*` | Route definitions and credentials guard. |
-| `src/app/theme/*` | Theme state, persistence, and document attribute. |
-| `src/app/styles/tokens.scss` | All theme tokens. |
-| `src/pages/*` | Route-level page composition. |
-| `src/components/chat/*` | Reusable chat-specific UI. |
-| `src/components/connection/*` | Credential form. |
-| `src/components/ui/*` | Reusable domain-neutral primitives. |
-| `src/hooks/useNotificationPolling.ts` | Cancellable receive lifecycle. |
-| `src/shared/lib/*` | Pure validation, formatting, and chat ID helpers. |
+| Path                                  | Responsibility                                                   |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `src/api/axiosConfig.ts`              | Configured Axios instance without runtime credentials.           |
+| `src/api/GreenApi.ts`                 | Typed static GREEN-API send/receive methods.                     |
+| `src/api/types.ts`                    | API request and notification contracts.                          |
+| `src/app/chat/ChatProvider.tsx`       | In-memory chat summaries and message state shared across routes. |
+| `src/app/router/*`                    | Route definitions and credentials guard.                         |
+| `src/app/theme/*`                     | Theme state, persistence, and document attribute.                |
+| `src/app/styles/tokens.scss`          | All theme tokens.                                                |
+| `src/pages/*`                         | Route-level page composition.                                    |
+| `src/components/chat/*`               | Reusable chat-specific UI.                                       |
+| `src/components/connection/*`         | Credential form.                                                 |
+| `src/components/ui/*`                 | Reusable domain-neutral primitives.                              |
+| `src/hooks/useNotificationPolling.ts` | Cancellable receive lifecycle.                                   |
+| `src/shared/lib/*`                    | Pure validation, formatting, and chat ID helpers.                |
 
 ### Task 1: Bootstrap the Vite project and quality gates
 
 **Files:**
+
 - Create: `package.json`, `vite.config.ts`, `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`, `index.html`, `src/main.tsx`
 - Create: `eslint.config.js`, `.prettierrc.json`, `.prettierignore`, `.stylelintrc.json`, `.stylelintignore`, `.gitignore`
 - Create: `.husky/pre-commit`, `.husky/pre-push`, `jest.config.ts`, `src/test/setup.ts`
 
 **Interfaces:**
+
 - Produces: `yarn dev`, `yarn build`, `yarn typecheck`, `yarn lint`, `yarn stylelint`, `yarn format:check`, and `yarn test` scripts.
 
 - [ ] **Step 1: Initialize Git and scaffold the Vite React TypeScript project without overwriting the approved documentation**
@@ -97,11 +99,13 @@ git commit -m "chore: bootstrap max chat project"
 ### Task 2: Add pure domain helpers and the Axios API layer
 
 **Files:**
+
 - Create: `src/api/axiosConfig.ts`, `src/api/GreenApi.ts`, `src/api/types.ts`
 - Create: `src/shared/lib/chatId.ts`, `src/shared/lib/validation.ts`, `src/shared/lib/formatters.ts`
 - Test: `src/api/GreenApi.test.ts`, `src/shared/lib/chatId.test.ts`, `src/shared/lib/validation.test.ts`
 
 **Interfaces:**
+
 - Produces: `normalizeChatId(value: string): string`, `validateMessage(value: string): string | null`, and `GreenApi.sendMessage(credentials, body)` / `GreenApi.receiveNotification(credentials, signal)`.
 
 - [ ] **Step 1: Write failing helper and API tests**
@@ -134,12 +138,14 @@ git commit -m "feat: add green api client"
 ### Task 3: Implement theme tokens and reusable UI primitives
 
 **Files:**
+
 - Create: `src/app/styles/tokens.scss`, `src/app/styles/globals.scss`
 - Create: `src/app/theme/themeMode.ts`, `src/app/theme/ThemeProvider.tsx`
 - Create: `src/components/ui/Avatar.tsx`, `src/components/ui/Button.tsx`, `src/components/ui/IconButton.tsx`, `src/components/ui/Input.tsx`, `src/components/ui/EmptyState.tsx`
 - Test: `src/app/theme/ThemeProvider.test.tsx`
 
 **Interfaces:**
+
 - Produces: `ThemeProvider`, `useTheme(): { mode: ThemeMode; toggleTheme(): void }`, and reusable, accessible UI primitives.
 
 - [ ] **Step 1: Write the failing theme test**
@@ -176,12 +182,14 @@ git commit -m "feat: add themes and ui primitives"
 ### Task 4: Add session state and protected routing
 
 **Files:**
+
 - Create: `src/app/session/SessionProvider.tsx`, `src/app/chat/ChatProvider.tsx`, `src/app/chat/types.ts`, `src/app/router/AppRouter.tsx`, `src/app/router/routes.tsx`
 - Create: `src/pages/ConnectionPage.tsx`, `src/pages/ChatsPage.tsx`, `src/pages/ChatPage.tsx`
 - Modify: `src/app/App.tsx`, `src/main.tsx`
 - Test: `src/app/router/AppRouter.test.tsx`
 
 **Interfaces:**
+
 - Consumes: `ApiCredentials` from Task 2 and `ThemeProvider` from Task 3.
 - Produces: `ChatSummary { id: string; title: string; lastMessage?: string; updatedAt: number }`, `ChatMessage { id: string; text: string; direction: 'incoming' | 'outgoing'; createdAt: number; status?: 'sending' | 'sent' | 'failed' }`, `useSession(): { credentials: ApiCredentials | null; connect(credentials): void; disconnect(): void }`, and `useChats(): { chats: ChatSummary[]; createChat(chat: ChatSummary): void; appendMessage(chatId: string, message: ChatMessage): void }`.
 
@@ -219,6 +227,7 @@ git commit -m "feat: add protected chat routes"
 ### Task 5: Build connection, chat-list, and responsive layout components
 
 **Files:**
+
 - Create: `src/components/connection/ConnectionForm.tsx`
 - Create: `src/components/chat/ChatList.tsx`, `src/components/chat/CreateChatDialog.tsx`, `src/components/chat/ChatHeader.tsx`
 - Create: `src/components/layout/NavigationRail.tsx`, `src/components/layout/ChatShell.tsx`
@@ -226,6 +235,7 @@ git commit -m "feat: add protected chat routes"
 - Test: `src/components/connection/ConnectionForm.test.tsx`, `src/components/chat/CreateChatDialog.test.tsx`
 
 **Interfaces:**
+
 - Consumes: `useSession` and `useChats` from Task 4, `normalizeChatId` from Task 2, and UI primitives from Task 3.
 - Produces: navigation to `/chats/:chatId` after `useChats().createChat`.
 
@@ -263,12 +273,14 @@ git commit -m "feat: add connection and chat navigation"
 ### Task 6: Implement messages, send flow, and one-reply polling
 
 **Files:**
+
 - Create: `src/components/chat/MessageBubble.tsx`, `src/components/chat/MessageList.tsx`, `src/components/chat/MessageComposer.tsx`
 - Create: `src/hooks/useNotificationPolling.ts`
 - Modify: `src/pages/ChatPage.tsx`, `src/components/chat/ChatHeader.tsx`
 - Test: `src/components/chat/MessageComposer.test.tsx`, `src/hooks/useNotificationPolling.test.tsx`, `src/pages/ChatPage.test.tsx`
 
 **Interfaces:**
+
 - Consumes: `GreenApi`, `validateMessage`, `ApiCredentials`, active `chatId`, and `AbortSignal` support from Tasks 2 and 4.
 - Produces: `useNotificationPolling({ credentials, chatId, onMessage, onError }): void`.
 
@@ -310,11 +322,13 @@ git commit -m "feat: add message sending and receiving"
 ### Task 7: Complete visual polish, documentation, and release checks
 
 **Files:**
+
 - Modify: `src/app/styles/globals.scss`, all relevant `*.module.scss` files
 - Create: `README.md`, `.env.example`
 - Modify: `package.json`
 
 **Interfaces:**
+
 - Consumes: all prior pages and components.
 - Produces: a documented local startup path and a production-ready build.
 
