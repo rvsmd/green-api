@@ -1,8 +1,8 @@
 import styles from './EmptyChatState.module.scss';
 
 export const EmptyChatState = () => (
-  <section aria-label="Чат не выбран" className={styles.state}>
-    <div aria-hidden="true" className={styles.icon}>
+  <section aria-label="Чат не выбран" className={styles['empty-chat-state']}>
+    <div aria-hidden="true" className={styles['empty-chat-state__icon']}>
       ✦
     </div>
     <h2>Выберите чат</h2>

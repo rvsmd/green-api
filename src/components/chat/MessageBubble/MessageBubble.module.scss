@@ -1,4 +1,4 @@
-.row {
+.message-bubble {
   display: flex;
   gap: 6px;
   align-items: center;
@@ -6,11 +6,11 @@
   max-width: 88%;
 }
 
-.outgoing {
+.message-bubble--outgoing {
   align-self: flex-end;
 }
 
-.message {
+.message-bubble__content {
   display: grid;
   gap: 4px;
   max-width: 100%;
@@ -21,17 +21,17 @@
   white-space: pre-wrap;
 }
 
-.time {
+.message-bubble__time {
   justify-self: end;
   color: var(--color-muted);
   font-size: 11px;
 }
 
-.message.outgoing {
+.message-bubble__content--outgoing {
   background: var(--color-outgoing);
 }
 
-.status {
+.message-bubble__status {
   display: grid;
   flex: 0 0 18px;
   width: 18px;
@@ -42,15 +42,15 @@
   font-weight: 700;
 }
 
-.sent {
+.message-bubble__status--sent {
   color: var(--color-status-sent);
 }
 
-.failed {
+.message-bubble__status--failed {
   color: var(--color-status-failed);
 }
 
-.sending {
+.message-bubble__status--sending {
   border: 2px solid color-mix(in srgb, var(--color-accent) 25%, transparent);
   border-top-color: var(--color-accent);
   animation: spin 0.8s linear infinite;
@@ -63,7 +63,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sending {
+  .message-bubble__status--sending {
     animation: none;
   }
 }

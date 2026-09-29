@@ -1,15 +1,15 @@
-.shell {
+.chats-page {
   display: grid;
   grid-template-columns: minmax(300px, 360px) 1fr;
   min-height: 100vh;
 }
 
 @media (width <= 720px) {
-  .shell {
+  .chats-page {
     display: block;
   }
 
-  .shell:has([data-chat]) [data-chat-sidebar] {
+  .chats-page:has([data-chat]) [data-chat-sidebar] {
     display: none;
   }
 }

@@ -18,7 +18,7 @@ export const MessageList = ({ messages }: { messages: ChatMessage[] }) => {
   }, [messages.length]);
 
   return (
-    <section className={styles.list} ref={listRef}>
+    <section className={styles['message-list']} ref={listRef}>
       {messagesByCreationTime.map((message) => (
         <MessageBubble key={message.id} message={message} />
       ))}

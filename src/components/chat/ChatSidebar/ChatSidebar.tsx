@@ -7,28 +7,28 @@ import { formatPhone, getPhoneDigits, isPhoneValid, removePhoneDigit } from '@sh
 
 import styles from './ChatSidebar.module.scss';
 
-type Props = {
+type ChatSidebarProps = {
   chats: Chat[];
   onCreate: (number: string) => void;
 };
 
-export const ChatSidebar = ({ chats, onCreate }: Props) => {
-  const [number, setNumber] = useState('');
+export const ChatSidebar = ({ chats, onCreate }: ChatSidebarProps) => {
+  const [phoneDigits, setPhoneDigits] = useState('');
 
-  const create = () => {
-    if (!isPhoneValid(number)) return;
+  const handleCreateChat = () => {
+    if (!isPhoneValid(phoneDigits)) return;
 
-    onCreate(getPhoneDigits(number).replace(/^8/, '7'));
-    setNumber('');
+    onCreate(getPhoneDigits(phoneDigits).replace(/^8/, '7'));
+    setPhoneDigits('');
   };
 
   return (
-    <aside className={styles.sidebar} data-chat-sidebar>
-      <div className={styles.heading}>
+    <aside className={styles['chat-sidebar']} data-chat-sidebar>
+      <div className={styles['chat-sidebar__heading']}>
         <h1>Чаты</h1>
         <ThemeToggle />
       </div>
-      <div className={styles.creator}>
+      <div className={styles['chat-sidebar__creator']}>
         <label className="visually-hidden" htmlFor="recipient-phone">
           Номер получателя
         </label>
@@ -36,10 +36,10 @@ export const ChatSidebar = ({ chats, onCreate }: Props) => {
           id="recipient-phone"
           inputMode="tel"
           placeholder="+7 (999) 123-45-67"
-          value={formatPhone(number)}
-          onChange={(event) => setNumber(getPhoneDigits(event.target.value))}
+          value={formatPhone(phoneDigits)}
+          onChange={(event) => setPhoneDigits(getPhoneDigits(event.target.value))}
           onKeyDown={(event) => {
-            if (event.key === 'Enter') create();
+            if (event.key === 'Enter') handleCreateChat();
 
             if (
               event.key === 'Backspace' &&
@@ -48,22 +48,24 @@ export const ChatSidebar = ({ chats, onCreate }: Props) => {
               !/\d/.test(event.currentTarget.value[event.currentTarget.selectionStart - 1] ?? '')
             ) {
               event.preventDefault();
-              setNumber(removePhoneDigit(number, event.currentTarget.selectionStart));
+              setPhoneDigits(removePhoneDigit(phoneDigits, event.currentTarget.selectionStart));
             }
           }}
         />
-        <button disabled={!isPhoneValid(number)} type="button" onClick={create}>
+        <button disabled={!isPhoneValid(phoneDigits)} type="button" onClick={handleCreateChat}>
           Создать чат
         </button>
       </div>
-      <nav aria-label="Список чатов" className={styles.list}>
+      <nav aria-label="Список чатов" className={styles['chat-sidebar__list']}>
         {chats.map((chat) => (
           <NavLink
-            className={({ isActive }) => `${styles.listItem} ${isActive ? styles.active : ''}`}
+            className={({ isActive }) =>
+              `${styles['chat-sidebar__list-item']} ${isActive ? styles['chat-sidebar__list-item--active'] : ''}`
+            }
             key={chat.id}
             to={`/chats/${chat.id}`}
           >
-            <span aria-hidden="true" className={styles.avatar}>
+            <span aria-hidden="true" className={styles['chat-sidebar__avatar']}>
               {chat.title.slice(-2)}
             </span>
             <span>

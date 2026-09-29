@@ -1,4 +1,4 @@
-.list {
+.message-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -7,6 +7,6 @@
   padding: 24px;
 }
 
-.list > :first-child {
+.message-list > :first-child {
   margin-top: auto;
 }

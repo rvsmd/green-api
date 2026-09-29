@@ -50,7 +50,7 @@ export const ChatPage = () => {
   };
 
   return (
-    <section className={styles.chat} data-chat>
+    <section className={styles['chat-page']} data-chat>
       <ChatHeader title={chatId} />
       <MessageList messages={chat?.messages ?? []} />
       <MessageComposer

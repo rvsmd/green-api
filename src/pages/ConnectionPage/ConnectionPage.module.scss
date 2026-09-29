@@ -1,11 +1,11 @@
-.connection {
+.connection-page {
   display: grid;
   min-height: 100vh;
   place-items: center;
   padding: 24px;
 }
 
-.form {
+.connection-page__form {
   display: grid;
   width: min(100%, 420px);
   gap: 16px;
@@ -16,7 +16,7 @@
   box-shadow: var(--shadow);
 }
 
-.label {
+.connection-page__label {
   display: grid;
   gap: 6px;
 }

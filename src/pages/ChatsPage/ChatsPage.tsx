@@ -20,7 +20,7 @@ export const ChatsPage = () => {
   };
 
   return (
-    <main className={styles.shell}>
+    <main className={styles['chats-page']}>
       <ChatSidebar chats={chats} onCreate={open} />
       <Outlet />
     </main>

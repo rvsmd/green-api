@@ -6,10 +6,10 @@ export const ChatHeader = ({ title }: { title: string }) => {
   const navigate = useNavigate();
 
   return (
-    <header className={styles.header}>
+    <header className={styles['chat-header']}>
       <button
         aria-label="Назад"
-        className={styles.backButton}
+        className={styles['chat-header__back-button']}
         onClick={() => void navigate('/chats')}
       >
         ←

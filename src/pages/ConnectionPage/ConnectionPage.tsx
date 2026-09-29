@@ -21,15 +21,15 @@ export const ConnectionPage = () => {
   };
 
   return (
-    <main className={styles.connection}>
-      <form className={styles.form} onSubmit={submit}>
+    <main className={styles['connection-page']}>
+      <form className={styles['connection-page__form']} onSubmit={submit}>
         <h1>MAX Чаты</h1>
         <p>Подключите инстанс GREEN-API</p>
-        <label className={styles.label}>
+        <label className={styles['connection-page__label']}>
           Id инстанса
           <input value={idInstance} onChange={(event) => setId(event.target.value)} />
         </label>
-        <label className={styles.label}>
+        <label className={styles['connection-page__label']}>
           API token
           <input
             type="password"
