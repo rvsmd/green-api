@@ -10,10 +10,10 @@ const statusLabels = {
 
 const timeFormatter = new Intl.DateTimeFormat('ru-RU', { hour: '2-digit', minute: '2-digit' });
 
-const MessageStatus = ({ status }: { status: NonNullable<ChatMessage['status']> }) => (
+const MessageDeliveryStatus = ({ status }: { status: NonNullable<ChatMessage['status']> }) => (
   <span
     aria-label={statusLabels[status]}
-    className={`${styles.status} ${styles[status]}`}
+    className={`${styles['message-bubble__status']} ${styles[`message-bubble__status--${status}`]}`}
     role="img"
     title={statusLabels[status]}
   >
@@ -23,13 +23,18 @@ const MessageStatus = ({ status }: { status: NonNullable<ChatMessage['status']> 
 );
 
 export const MessageBubble = ({ message }: { message: ChatMessage }) => (
-  <div className={`${styles.row} ${styles[message.direction]}`}>
+  <div className={`${styles['message-bubble']} ${styles[`message-bubble--${message.direction}`]}`}>
     {message.direction === 'outgoing' && message.status && (
-      <MessageStatus status={message.status} />
+      <MessageDeliveryStatus status={message.status} />
     )}
-    <div className={`${styles.message} ${styles[message.direction]}`}>
+    <div
+      className={`${styles['message-bubble__content']} ${styles[`message-bubble__content--${message.direction}`]}`}
+    >
       <span>{message.text}</span>
-      <time className={styles.time} dateTime={new Date(message.createdAt).toISOString()}>
+      <time
+        className={styles['message-bubble__time']}
+        dateTime={new Date(message.createdAt).toISOString()}
+      >
         {timeFormatter.format(message.createdAt)}
       </time>
     </div>

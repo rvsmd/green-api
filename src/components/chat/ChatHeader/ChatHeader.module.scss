@@ -1,4 +1,4 @@
-.header {
+.chat-header {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -6,7 +6,7 @@
   background: var(--color-surface);
 }
 
-.backButton {
+.chat-header__back-button {
   background: transparent;
   color: var(--color-text);
 }

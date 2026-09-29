@@ -1,4 +1,4 @@
-.sidebar {
+.chat-sidebar {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -8,39 +8,39 @@
   background: var(--color-surface);
 }
 
-.heading {
+.chat-sidebar__heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
-.heading h1 {
+.chat-sidebar__heading h1 {
   margin: 0;
   font-size: 28px;
 }
 
-.creator {
+.chat-sidebar__creator {
   display: flex;
   gap: 8px;
 }
 
-.creator input {
+.chat-sidebar__creator input {
   min-width: 0;
   width: 100%;
 }
 
-.creator button {
+.chat-sidebar__creator button {
   white-space: nowrap;
 }
 
-.list {
+.chat-sidebar__list {
   display: grid;
   gap: 6px;
   overflow: auto;
 }
 
-.listItem {
+.chat-sidebar__list-item {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -51,26 +51,26 @@
   text-decoration: none;
 }
 
-.listItem:hover,
-.active {
+.chat-sidebar__list-item:hover,
+.chat-sidebar__list-item--active {
   background: color-mix(in srgb, var(--color-accent) 12%, transparent);
 }
 
-.listItem strong,
-.listItem small {
+.chat-sidebar__list-item strong,
+.chat-sidebar__list-item small {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.listItem small {
+.chat-sidebar__list-item small {
   max-width: 230px;
   margin-top: 3px;
   color: var(--color-muted);
 }
 
-.avatar {
+.chat-sidebar__avatar {
   display: grid;
   flex: 0 0 42px;
   width: 42px;

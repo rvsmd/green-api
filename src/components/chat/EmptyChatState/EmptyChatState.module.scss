@@ -1,4 +1,4 @@
-.state {
+.empty-chat-state {
   display: grid;
   align-content: center;
   justify-items: center;
@@ -15,7 +15,7 @@
   text-align: center;
 }
 
-.icon {
+.empty-chat-state__icon {
   display: grid;
   width: 72px;
   height: 72px;
@@ -26,18 +26,18 @@
   font-size: 34px;
 }
 
-.state h2,
-.state p {
+.empty-chat-state h2,
+.empty-chat-state p {
   margin: 0;
 }
 
-.state p {
+.empty-chat-state p {
   max-width: 320px;
   color: var(--color-muted);
 }
 
 @media (width <= 720px) {
-  .state {
+  .empty-chat-state {
     display: none;
   }
 }

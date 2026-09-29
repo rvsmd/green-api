@@ -6,7 +6,7 @@ export const ThemeToggle = () => {
   const { mode, toggleTheme } = useTheme();
 
   return (
-    <button aria-label="Переключить тему" className={styles.button} onClick={toggleTheme}>
+    <button aria-label="Переключить тему" className={styles['theme-toggle']} onClick={toggleTheme}>
       {mode === 'dark' ? '☀' : '☾'}
     </button>
   );
