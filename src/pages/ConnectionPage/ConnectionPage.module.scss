@@ -1,0 +1,22 @@
+.connection {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+.form {
+  display: grid;
+  width: min(100%, 420px);
+  gap: 16px;
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+.label {
+  display: grid;
+  gap: 6px;
+}

@@ -1,0 +1,33 @@
+.composer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  background: var(--color-surface);
+}
+
+.field {
+  position: relative;
+  flex: 1;
+}
+
+.field textarea {
+  width: 100%;
+  padding-bottom: 30px;
+  resize: none;
+}
+
+.characterCount {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  color: var(--color-muted);
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.error {
+  margin: 0;
+  color: var(--color-status-failed);
+  font-size: 13px;
+}

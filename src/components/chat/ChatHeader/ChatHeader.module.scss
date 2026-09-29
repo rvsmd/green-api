@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  background: var(--color-surface);
+}
+
+.backButton {
+  background: transparent;
+  color: var(--color-text);
+}

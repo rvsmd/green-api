@@ -1,0 +1,43 @@
+.state {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 12px;
+  min-height: 100vh;
+  padding: 24px;
+  background-color: var(--color-chat-background);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in srgb, var(--color-accent) 35%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+  text-align: center;
+}
+
+.icon {
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-surface) 86%, transparent);
+  color: var(--color-accent);
+  font-size: 34px;
+}
+
+.state h2,
+.state p {
+  margin: 0;
+}
+
+.state p {
+  max-width: 320px;
+  color: var(--color-muted);
+}
+
+@media (width <= 720px) {
+  .state {
+    display: none;
+  }
+}

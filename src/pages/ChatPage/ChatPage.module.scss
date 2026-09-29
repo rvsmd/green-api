@@ -1,0 +1,12 @@
+.chat {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100vh;
+  background-color: var(--color-chat-background);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in srgb, var(--color-accent) 35%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+}

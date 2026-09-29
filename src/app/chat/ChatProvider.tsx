@@ -1,24 +1,26 @@
-import { createContext, type PropsWithChildren, useContext, useState } from 'react';
+import { type PropsWithChildren, useState } from 'react';
+
+import { ChatContext } from './ChatContext';
 import type { Chat, ChatMessage } from './types';
-type Value = {
-  chats: Chat[];
-  createChat: (id: string) => void;
-  addMessage: (chatId: string, message: ChatMessage) => void;
-  updateMessage: (chatId: string, id: string, status: ChatMessage['status']) => void;
-};
-const Context = createContext<Value | null>(null);
+
 export const ChatProvider = ({ children }: PropsWithChildren) => {
   const [chats, setChats] = useState<Chat[]>([]);
+  const [notificationError, setNotificationError] = useState<string | null>(null);
+
   const createChat = (id: string) =>
     setChats((items) =>
       items.some((item) => item.id === id) ? items : [...items, { id, title: id, messages: [] }],
     );
+
   const addMessage = (chatId: string, message: ChatMessage) =>
     setChats((items) =>
       items.map((item) =>
-        item.id === chatId ? { ...item, messages: [...item.messages, message] } : item,
+        item.id === chatId && !item.messages.some((itemMessage) => itemMessage.id === message.id)
+          ? { ...item, messages: [...item.messages, message] }
+          : item,
       ),
     );
+
   const updateMessage = (chatId: string, id: string, status: ChatMessage['status']) =>
     setChats((items) =>
       items.map((item) =>
@@ -32,14 +34,19 @@ export const ChatProvider = ({ children }: PropsWithChildren) => {
           : item,
       ),
     );
+
   return (
-    <Context.Provider value={{ chats, createChat, addMessage, updateMessage }}>
+    <ChatContext.Provider
+      value={{
+        chats,
+        createChat,
+        addMessage,
+        updateMessage,
+        notificationError,
+        setNotificationError,
+      }}
+    >
       {children}
-    </Context.Provider>
+    </ChatContext.Provider>
   );
-};
-export const useChats = () => {
-  const value = useContext(Context);
-  if (!value) throw new Error('ChatProvider is required');
-  return value;
 };

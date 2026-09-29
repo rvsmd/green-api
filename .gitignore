@@ -1,9 +1,8 @@
 node_modules
 dist
+docs
 coverage
 .env
 .superpowers
 .codex
-.pnp.cjs
-.pnp.loader.mjs
 .yarn

@@ -5,6 +5,7 @@ export default {
     '^@app/(.*)$': '<rootDir>/src/app/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
     '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^@pages$': '<rootDir>/src/pages/index.ts',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@shared/(.*)$': '<rootDir>/src/shared/$1',
     '\\.(css|scss)$': 'identity-obj-proxy',

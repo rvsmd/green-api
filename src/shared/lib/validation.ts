@@ -1,4 +1,4 @@
-const MAX_MESSAGE_LENGTH = 4000;
+export const MAX_MESSAGE_LENGTH = 4000;
 
 export const validateMessage = (value: string): string | null => {
   if (!value.trim()) return 'Введите сообщение';

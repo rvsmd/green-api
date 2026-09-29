@@ -1,15 +1,15 @@
-import { createContext, type PropsWithChildren, useContext, useState } from 'react';
+import { type PropsWithChildren, useState } from 'react';
+
 import type { ApiCredentials } from '@api/types';
-type Value = { credentials: ApiCredentials | null; connect: (value: ApiCredentials) => void };
-const Context = createContext<Value | null>(null);
+
+import { SessionContext } from './SessionContext';
+
 export const SessionProvider = ({ children }: PropsWithChildren) => {
   const [credentials, setCredentials] = useState<ApiCredentials | null>(null);
+
   return (
-    <Context.Provider value={{ credentials, connect: setCredentials }}>{children}</Context.Provider>
+    <SessionContext.Provider value={{ credentials, connect: setCredentials }}>
+      {children}
+    </SessionContext.Provider>
   );
-};
-export const useSession = () => {
-  const value = useContext(Context);
-  if (!value) throw new Error('SessionProvider is required');
-  return value;
 };

@@ -21,6 +21,7 @@
       "@app/*": ["src/app/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@pages": ["src/pages/index.ts"],
       "@pages/*": ["src/pages/*"],
       "@shared/*": ["src/shared/*"]
     }
